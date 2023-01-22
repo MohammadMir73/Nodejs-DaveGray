@@ -3,12 +3,14 @@ const data = {
     setEmployees: function (data) { this.employees = data }
 };
 
+const fsPromises = require('fs').promises;
+const path = require('path');
 
 const getAllEmployees = (req, res) => {
     res.json(data.employees);
 };
 
-const createNewEmployee = (req, res) => {
+const createNewEmployee = async (req, res) => {
     const newEmployee = {
         id: data.employees[data.employees.length - 1].id + 1 || 1,
         firstname: req.body.firstname,
@@ -20,10 +22,16 @@ const createNewEmployee = (req, res) => {
     }
 
     data.setEmployees([...data.employees, newEmployee]);
+
+    await fsPromises.writeFile(
+        path.join(__dirname, '..', 'model', 'employees.json'),
+        JSON.stringify(data.employees)
+    );
+
     res.status(201).json(data.employees)
 };
 
-const updateEmployee = (req, res) => {
+const updateEmployee = async (req, res) => {
     const employee = data.employees.find(emp => emp.id === parseInt(req.body.id));
     if (!employee) {
         return res.status(400).json({ "message": `Employee ID ${req.body.id} not found!`});
@@ -33,16 +41,28 @@ const updateEmployee = (req, res) => {
     const filteredArray = data.employees.filter(emp => emp.id !== parseInt(req.body.id));
     const unSortedArray = [...filteredArray, employee];
     data.setEmployees(unSortedArray.sort((a,b) => a.id > b.id ? 1 : a.id < b.id ? -1 : 0));
+    
+    await fsPromises.writeFile(
+        path.join(__dirname, '..', 'model', 'employees.json'),
+        JSON.stringify(data.employees)
+    );
+
     res.status(201).json(data.employees);
 };
 
-const deleteEmployee = (req, res) => {
+const deleteEmployee = async (req, res) => {
     const employee = data.employees.find(emp => emp.id === parseInt(req.body.id));
     if (!employee) {
         return res.status(400).json({ "message": `Employee ID ${req.body.id} not found!`});
     }
     const filteredArray = data.employees.filter(emp => emp.id !== parseInt(req.body.id));
     data.setEmployees([...filteredArray]);
+
+    await fsPromises.writeFile(
+        path.join(__dirname, '..', 'model', 'employees.json'),
+        JSON.stringify(data.employees)
+    );
+    
     res.status(200).json(data.employees);
 }
 

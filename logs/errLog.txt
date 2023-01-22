@@ -1,1 +1,6 @@
 20230121	21:22:34	4e312149-28f9-4a12-9167-78456c2f901e	Error: Not allowed by CORS
+20230122	12:44:27	9b17338c-f632-4842-a0ff-112c2f4d03e8	SyntaxError: Unexpected string in JSON at position 35
+20230122	12:45:40	3e8bde20-9d74-49e5-9be9-400655eaa2d2	SyntaxError: Unexpected string in JSON at position 35
+20230122	12:45:41	2082c3e2-761d-4f50-b832-c36be24aab97	SyntaxError: Unexpected string in JSON at position 35
+20230122	12:45:42	2ffdfb16-13c0-4ee7-a759-cb5d7fb6b4b5	SyntaxError: Unexpected string in JSON at position 35
+20230122	12:45:42	7c3f6730-6620-42df-9e3f-1b91e0ec49e7	SyntaxError: Unexpected string in JSON at position 35

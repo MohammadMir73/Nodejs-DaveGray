@@ -4,3 +4,5 @@
 20230122	12:45:41	2082c3e2-761d-4f50-b832-c36be24aab97	SyntaxError: Unexpected string in JSON at position 35
 20230122	12:45:42	2ffdfb16-13c0-4ee7-a759-cb5d7fb6b4b5	SyntaxError: Unexpected string in JSON at position 35
 20230122	12:45:42	7c3f6730-6620-42df-9e3f-1b91e0ec49e7	SyntaxError: Unexpected string in JSON at position 35
+20230123	17:42:52	69c9b30b-d45a-4171-9452-8406310dabfb	ReferenceError: whiteList is not defined
+20230123	18:48:07	d71d7eaf-b7f2-4434-9a3d-d3a0219af6cf	TypeError: authHeader?.startWith is not a function
